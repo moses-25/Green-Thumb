@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getPlants } from "../services/plants";
+import PlantList from "../components/plants/PlantList";
 
 const PlantsPage = () => {
   const [plants, setPlants] = useState([]);
@@ -14,6 +15,10 @@ const PlantsPage = () => {
       <ul>
         {plants.map(p => <li key={p.id}>{p.name}</li>)}
       </ul>
+      <h1>GreenThumb Dashboard</h1>
+      <PlantList />
     </div>
   );
 };
+
+export default PlantsPage;

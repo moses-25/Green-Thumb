@@ -3,7 +3,9 @@ import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";
 import PlantsPage from "./pages/PlantsPage";
 import HomePage from "./pages/HomePage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
+<Route path="/plants" element={<ProtectedRoute><PlantsPage /></ProtectedRoute>} />
 function App() {
   return (
     <BrowserRouter>
