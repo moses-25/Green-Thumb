@@ -50,7 +50,7 @@ const ReminderCalendar = ({ plantId }) => {
             <ul>
               {remindersForSelectedDate.map((r) => (
                 <li key={r.id}>
-                  <strong>{r.task}</strong> — {r.note || "No note"}
+                  <strong>{r.task}</strong> — {r.note || <em>No note</em>}
                 </li>
               ))}
             </ul>
@@ -64,3 +64,4 @@ const ReminderCalendar = ({ plantId }) => {
 };
 
 export default ReminderCalendar;
+
