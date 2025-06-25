@@ -1,61 +1,41 @@
-// src/components/plants/PlantList.jsx
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PlantCard from "./PlantCard";
 import PlantForm from "./PlantForm";
-import { getPlants, deletePlant } from "../../services/plants";
 
 const PlantList = () => {
   const [plants, setPlants] = useState([]);
-  const [editingPlant, setEditingPlant] = useState(null);
+  const [editing, setEditing] = useState(null);
 
-  const loadPlants = async () => {
-    try {
-      const res = await getPlants();
-      setPlants(res.data);
-    } catch (err) {
-      alert("Failed to load plants.");
+  const handleAddOrUpdate = (plant) => {
+    if (plant.id) {
+      setPlants(plants.map((p) => (p.id === plant.id ? plant : p)));
+    } else {
+      plant.id = Date.now();
+      setPlants([...plants, plant]);
     }
+    setEditing(null);
   };
 
-  const handleDelete = async (id) => {
-    await deletePlant(id);
-    loadPlants();
+  const handleDelete = (id) => {
+    setPlants(plants.filter((p) => p.id !== id));
   };
-
-  const handleEdit = (plant) => {
-    setEditingPlant(plant);
-  };
-
-  const handleFormDone = () => {
-    setEditingPlant(null);
-    loadPlants();
-  };
-
-  useEffect(() => {
-    loadPlants();
-  }, []);
 
   return (
     <div>
-      <h2>Your Plants</h2>
-      <PlantForm existingPlant={editingPlant} onDone={handleFormDone} />
+      <PlantForm onSubmit={handleAddOrUpdate} selectedPlant={editing} />
       <div className="plant-list">
-        {plants.length > 0 ? (
-          plants.map((plant) => (
-            <PlantCard
-              key={plant.id}
-              plant={plant}
-              onEdit={handleEdit}
-              onDelete={handleDelete}
-            />
-          ))
-        ) : (
-          <p>No plants found. Add one above!</p>
-        )}
+        {plants.map((plant) => (
+          <PlantCard
+            key={plant.id}
+            plant={plant}
+            onEdit={setEditing}
+            onDelete={handleDelete}
+          />
+        ))}
       </div>
     </div>
   );
 };
 
 export default PlantList;
+

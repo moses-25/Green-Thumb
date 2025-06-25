@@ -1,5 +1,3 @@
-// src/components/auth/RegisterForm.jsx
-
 import { useState } from "react";
 import { register as registerAPI } from "../../services/auth";
 import { useNavigate } from "react-router-dom";
@@ -13,8 +11,9 @@ const RegisterForm = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  const handleChange = (e) =>
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,3 +61,4 @@ const RegisterForm = () => {
 };
 
 export default RegisterForm;
+

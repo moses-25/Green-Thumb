@@ -1,64 +1,24 @@
-// src/components/reminders/ReminderCalendar.jsx
-
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Calendar from "react-calendar";
-import 'react-calendar/dist/Calendar.css';
-import { getReminders } from "../../services/reminders";
-import { format } from "date-fns";
+import "react-calendar/dist/Calendar.css";
 
-const ReminderCalendar = ({ plantId }) => {
-  const [reminders, setReminders] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(null);
+const ReminderCalendar = ({ reminders }) => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const loadReminders = async () => {
-    const res = await getReminders();
-    const filtered = res.data.filter((r) => r.plant_id === plantId);
-    setReminders(filtered);
+  const getRemindersForDate = (date) => {
+    const d = date.toISOString().split("T")[0];
+    return reminders.filter((r) => r.date === d);
   };
-
-  useEffect(() => {
-    loadReminders();
-  }, [plantId]);
-
-  const formatDate = (date) => format(date, "yyyy-MM-dd");
-
-  const getTileContent = ({ date, view }) => {
-    if (view !== "month") return null;
-
-    const dateStr = formatDate(date);
-    const hasReminder = reminders.some((r) => r.date === dateStr);
-    return hasReminder ? <div style={{ fontSize: "0.6rem", color: "green" }}>•</div> : null;
-  };
-
-  const handleDateClick = (date) => {
-    setSelectedDate(formatDate(date));
-  };
-
-  const remindersForSelectedDate = reminders.filter((r) => r.date === selectedDate);
 
   return (
     <div>
-      <h3>Reminder Calendar</h3>
-      <Calendar
-        onClickDay={handleDateClick}
-        tileContent={getTileContent}
-      />
-      {selectedDate && (
-        <div style={{ marginTop: "1rem" }}>
-          <h4>Reminders on {selectedDate}</h4>
-          {remindersForSelectedDate.length > 0 ? (
-            <ul>
-              {remindersForSelectedDate.map((r) => (
-                <li key={r.id}>
-                  <strong>{r.task}</strong> — {r.note || <em>No note</em>}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No reminders for this day.</p>
-          )}
-        </div>
-      )}
+      <Calendar onChange={setSelectedDate} value={selectedDate} />
+      <h3 className="mt-4">Reminders for {selectedDate.toDateString()}:</h3>
+      <ul>
+        {getRemindersForDate(selectedDate).map((r) => (
+          <li key={r.id}>{r.text}</li>
+        ))}
+      </ul>
     </div>
   );
 };

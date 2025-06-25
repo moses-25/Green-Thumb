@@ -1,69 +1,28 @@
-// src/components/plants/PlantForm.jsx
-
 import { useState, useEffect } from "react";
-import { addPlant, updatePlant } from "../../services/plants";
 
-const PlantForm = ({ existingPlant, onDone }) => {
-  const [form, setForm] = useState({ name: "", species: "", location: "" });
+const PlantForm = ({ onSubmit, selectedPlant }) => {
+  const [form, setForm] = useState({ name: "", type: "", lastWatered: "" });
 
   useEffect(() => {
-    if (existingPlant) {
-      setForm({
-        name: existingPlant.name,
-        species: existingPlant.species,
-        location: existingPlant.location,
-      });
-    } else {
-      setForm({ name: "", species: "", location: "" });
-    }
-  }, [existingPlant]);
+    if (selectedPlant) setForm(selectedPlant);
+  }, [selectedPlant]);
 
-  const handleChange = (e) =>
-    setForm({ ...form, [e.target.name]: e.target.value });
-
-  const handleSubmit = async (e) => {
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      if (existingPlant) {
-        await updatePlant(existingPlant.id, form);
-      } else {
-        await addPlant(form);
-      }
-      onDone();
-    } catch (err) {
-      alert("Something went wrong while saving the plant.");
-    }
+    onSubmit(form);
+    setForm({ name: "", type: "", lastWatered: "" });
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "2rem" }}>
-      <h3>{existingPlant ? "Edit Plant" : "Add Plant"}</h3>
-      <input
-        name="name"
-        value={form.name}
-        onChange={handleChange}
-        placeholder="Plant name"
-        required
-      />
-      <input
-        name="species"
-        value={form.species}
-        onChange={handleChange}
-        placeholder="Species"
-        required
-      />
-      <input
-        name="location"
-        value={form.location}
-        onChange={handleChange}
-        placeholder="Location"
-        required
-      />
-      <button type="submit" style={{ marginTop: "1rem" }}>
-        {existingPlant ? "Update" : "Add"} Plant
-      </button>
+    <form onSubmit={handleSubmit}>
+      <input name="name" value={form.name} onChange={handleChange} placeholder="Plant Name" required />
+      <input name="type" value={form.type} onChange={handleChange} placeholder="Type" required />
+      <input name="lastWatered" value={form.lastWatered} onChange={handleChange} placeholder="Last Watered Date" required />
+      <button type="submit">{selectedPlant ? "Update" : "Add"} Plant</button>
     </form>
   );
 };
 
 export default PlantForm;
+

@@ -1,41 +1,16 @@
-import API from "./api";
+let plants = [];
 
-export const getPlants = async () => {
-  try {
-    const res = await API.get("/plants");
-    return res.data;
-  } catch (err) {
-    console.error("Failed to fetch plants:", err);
-    throw err;
-  }
+export const getPlants = () => Promise.resolve(plants);
+export const addPlant = (plant) => {
+  plant.id = Date.now();
+  plants.push(plant);
+  return Promise.resolve(plant);
 };
-
-export const addPlant = async (data) => {
-  try {
-    const res = await API.post("/plants", data);
-    return res.data;
-  } catch (err) {
-    console.error("Failed to add plant:", err);
-    throw err;
-  }
+export const updatePlant = (updated) => {
+  plants = plants.map((p) => (p.id === updated.id ? updated : p));
+  return Promise.resolve(updated);
 };
-
-export const updatePlant = async (id, data) => {
-  try {
-    const res = await API.put(`/plants/${id}`, data);
-    return res.data;
-  } catch (err) {
-    console.error(`Failed to update plant ${id}:`, err);
-    throw err;
-  }
+export const deletePlant = (id) => {
+  plants = plants.filter((p) => p.id !== id);
+  return Promise.resolve();
 };
-
-export const deletePlant = async (id) => {
-  try {
-    await API.delete(`/plants/${id}`);
-  } catch (err) {
-    console.error(`Failed to delete plant ${id}:`, err);
-    throw err;
-  }
-};
-

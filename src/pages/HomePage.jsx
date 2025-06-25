@@ -1,11 +1,8 @@
-import NotificationBox from "../components/ui/NotificationBox";
-
 const HomePage = () => {
   return (
-    <div>
-      <h1>Welcome to GreenThumb 🌿</h1>
-      <NotificationBox />
-      <NotificationBox plantId={1} />
+    <div className="homepage">
+      <h1>Welcome to GreenThumb 🌱</h1>
+      <p>Track your plants, manage reminders, and grow your garden with ease.</p>
     </div>
   );
 };
