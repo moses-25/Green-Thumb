@@ -44,7 +44,7 @@ const RegisterForm = () => {
           left: "50%",
           transform: "translate(-50%, -50%)",
           zIndex: 0,
-          pointerEvents: "none",
+          //pointerEvents: "none",
         }}
       >
         <video
@@ -74,7 +74,7 @@ const RegisterForm = () => {
           width: "100vw",
           height: "100vh",
           zIndex: 1,
-          pointerEvents: "none",
+          //pointerEvents: "none",
         }}
       />
 
@@ -91,7 +91,7 @@ const RegisterForm = () => {
           borderRadius: "12px",
           boxShadow: "0 4px 32px rgba(0,0,0,0.2)",
           padding: "2rem",
-          pointerEvents: "none",
+         // pointerEvents: "none",
         }}
       >
         <h2 className="register-title" style={{ textAlign: "center" }}>Join our community</h2>

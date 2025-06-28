@@ -46,7 +46,6 @@ const LoginForm = () => {
           zIndex: 0,
           objectFit: "cover",
           transform: "translate(-50%, -50%)",
-          pointerEvents: "none",
         }}
       >
         <source src={VIDEO_URL} type="video/mp4" />
@@ -62,7 +61,7 @@ const LoginForm = () => {
           width: "100vw",
           height: "100vh",
           zIndex: 1,
-          pointerEvents: "none",
+          //pointerEvents: "none",
         }}
       />
 

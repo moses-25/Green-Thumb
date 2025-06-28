@@ -34,12 +34,14 @@ const HomePage = () => {
         style={{
           position: "absolute",
           top: 0,
-          left: 0,
+          left: 0, 
           width: "100vw",
           height: "100vh",
           zIndex: 1,
           objectFit: "cover",
           borderRadius: "20px",
+          pointerEvents: "none",
+          backgroundColor: "rgba(0, 0, 0, 0.2)",
         }}
       />
 
