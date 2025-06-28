@@ -37,53 +37,10 @@ const Navbar = () => {
             textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)",
           }}
         >
-          Green Thumb
+          Green Thumb🌱
         </Link>
         <div>
-          <Link
-            to="/plants"
-            style={{
-              margin: "0 15px",
-              color: "#fff",
-              fontSize: "18px",
-              transition: "color 0.3s",
-            }}
-            onMouseOver={(e) => (e.target.style.color = "#FFD700")}
-            onMouseOut={(e) => (e.target.style.color = "#fff")}
-          >
-            Plants
-          </Link>
-          <Link
-            to="/reminders"
-            style={{
-              margin: "0 15px",
-              color: "#fff",
-              fontSize: "18px",
-              transition: "color 0.3s",
-            }}
-            onMouseOver={(e) => (e.target.style.color = "#FFD700")}
-            onMouseOut={(e) => (e.target.style.color = "#fff")}
-          >
-            Reminders
-          </Link>
-          {user ? (
-            <button
-              onClick={handleLogout}
-              style={{
-                margin: "0 15px",
-                background: "none",
-                border: "none",
-                color: "#fff",
-                fontSize: "18px",
-                cursor: "pointer",
-                transition: "color 0.3s",
-              }}
-              onMouseOver={(e) => (e.target.style.color = "#FFD700")}
-              onMouseOut={(e) => (e.target.style.color = "#fff")}
-            >
-              Logout
-            </button>
-          ) : (
+          {!user ? (
             <>
               <Link
                 to="/login"
@@ -111,6 +68,51 @@ const Navbar = () => {
               >
                 Register
               </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/plants"
+                style={{
+                  margin: "0 15px",
+                  color: "#fff",
+                  fontSize: "18px",
+                  transition: "color 0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
+                onMouseOut={(e) => (e.target.style.color = "#fff")}
+              >
+                My Plants
+              </Link>
+              <Link
+                to="/reminders"
+                style={{
+                  margin: "0 15px",
+                  color: "#fff",
+                  fontSize: "18px",
+                  transition: "color 0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
+                onMouseOut={(e) => (e.target.style.color = "#fff")}
+              >
+                Reminders
+              </Link>
+              <button
+                onClick={handleLogout}
+                style={{
+                  margin: "0 15px",
+                  background: "none",
+                  border: "none",
+                  color: "#fff",
+                  fontSize: "18px",
+                  cursor: "pointer",
+                  transition: "color 0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
+                onMouseOut={(e) => (e.target.style.color = "#fff")}
+              >
+                Logout
+              </button>
             </>
           )}
         </div>
