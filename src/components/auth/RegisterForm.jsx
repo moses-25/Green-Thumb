@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
+// Example video URL (replace with your own or a royalty-free video)
+const VIDEO_URL = "https://v1.pinimg.com/videos/mc/720p/46/20/69/4620695ebaa40cf835e9c646fc18296f.mp4";
+
 const RegisterForm = () => {
   const [form, setForm] = useState({
     name: "",
@@ -33,9 +36,65 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="register-page">
-      <div className="register-form-container">
-        <h2 className="register-title">Join our community</h2>
+    <div className="register-page" style={{ position: "relative", minHeight: "100vh", overflow: "hidden" }}>
+      {/* Video Background */}
+      <div
+        style={{
+          position: "fixed",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            width: "1700px",
+            height: "700px",
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            objectFit: "cover",
+          }}
+        >
+          <source src={VIDEO_URL} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+
+      {/* Overlay for readability */}
+      <div
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "20vw",
+          height: "20vh",
+          zIndex: 1,
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Form Container */}
+      <div
+        className="register-form-container"
+        style={{
+          position: "relative",
+          zIndex: 2,
+          maxWidth: "400px",
+          margin: "0 auto",
+          top: "10vh",
+          background: "rgba(255,255,255,0.92)",
+          borderRadius: "12px",
+          boxShadow: "0 4px 32px rgba(0,0,0,0.2)",
+          padding: "2rem",
+        }}
+      >
+        <h2 className="register-title" style={{ textAlign: "center" }}>Join our community</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name" className="form-label">
@@ -106,12 +165,14 @@ const RegisterForm = () => {
               borderRadius: "5px",
               border: "none",
               cursor: "pointer",
+              width: "100%",
+              marginTop: "1rem",
             }}
           >
             Join
           </button>
         </form>
-        <p className="register-login-link">
+        <p className="register-login-link" style={{ textAlign: "center", marginTop: "1rem" }}>
           Already have an account? <a href="/login">Login</a>
         </p>
       </div>
