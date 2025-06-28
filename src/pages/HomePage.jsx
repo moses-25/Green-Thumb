@@ -1,7 +1,7 @@
 import React from "react";
 
 const backgroundUrl =
-  "./public/image.jpg"; // Adjust the path as necessary
+  "./image.jpg"; // Adjust the path as necessary
 const backgroundStyle = {
   backgroundImage: `url(${backgroundUrl})`,
   backgroundSize: "cover",
