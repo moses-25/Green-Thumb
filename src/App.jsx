@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
@@ -20,13 +21,21 @@ const App = () => {
           <Route path="/register" element={<RegisterForm />} />
           <Route
             path="/plants"
-            element={<ProtectedRoute><PlantsPage /></ProtectedRoute>}
+            element={
+              <ProtectedRoute>
+                <PlantsPage />
+              </ProtectedRoute>
+            }
           />
           <Route
             path="/reminders"
-            element={<ProtectedRoute><RemindersPage /></ProtectedRoute>}
+            element={
+              <ProtectedRoute>
+                <RemindersPage />
+              </ProtectedRoute>
+            }
           />
-           <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </AuthProvider>

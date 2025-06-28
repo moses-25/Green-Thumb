@@ -10,15 +10,7 @@ body {
   margin: auto;
 }
 
-.navbar {
-  background-color: #ffffff;
-  padding: 1rem;
-  border-bottom: 1px solid #e5e5e5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
+.
 .menu-toggle {
   font-size: 1.5rem;
   background: none;

@@ -7,38 +7,147 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
+
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
 
   return (
-    <nav className="navbar">
-      <div className="logo">
-        <Link to="/"> 🌿GreenThumb</Link>
-      </div>
-      <button onClick={() => setMenuOpen(!menuOpen)} className="menu-toggle">
-        
-      </button>
-      {menuOpen && (
-        <div className="menu">
+    <nav
+      style={{
+        backgroundColor: "#228B22", // Forest green background
+        color: "#fff", // White text
+        padding: "15px 30px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // Add shadow for depth
+      }}
+    >
+      <div
+        className="container"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Link
+          to="/"
+          style={{
+            fontSize: "24px",
+            fontWeight: "bold",
+            color: "#fff",
+            textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)", // Add text shadow
+          }}
+        >
+          Green Thumb 🌱
+        </Link>
+        <div>
+          <Link
+            to="/plants"
+            style={{
+              margin: "0 15px",
+              color: "#fff",
+              fontSize: "18px",
+              transition: "color 0.3s",
+            }}
+            onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+            onMouseOut={(e) => (e.target.style.color = "#fff")}
+          >
+            Plants
+          </Link>
+          <Link
+            to="/reminders"
+            style={{
+              margin: "0 15px",
+              color: "#fff",
+              fontSize: "18px",
+              transition: "color 0.3s",
+            }}
+            onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+            onMouseOut={(e) => (e.target.style.color = "#fff")}
+          >
+            Reminders
+          </Link>
           {user ? (
             <>
-              <Link to="/plants" onClick={() => setMenuOpen(false)}>My Plants</Link>
-              <Link to="/reminders" onClick={() => setMenuOpen(false)}>Reminders</Link>
-              <button onClick={handleLogout}>Logout</button>
+              <Link
+                to="/plants"
+                style={{
+                  margin: "0 15px",
+                  color: "#fff",
+                  fontSize: "18px",
+                  transition: "color 0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+                onMouseOut={(e) => (e.target.style.color = "#fff")}
+              >
+                My Plants
+              </Link>
+              <Link
+                to="/reminders"
+                style={{
+                  margin: "0 15px",
+                  color: "#fff",
+                  fontSize: "18px",
+                  transition: "color 0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+                onMouseOut={(e) => (e.target.style.color = "#fff")}
+              >
+                Reminders
+              </Link>
+              <button
+                onClick={handleLogout}
+                style={{
+                  margin: "0 15px",
+                  background: "none",
+                  border: "none",
+                  color: "#fff",
+                  fontSize: "18px",
+                  cursor: "pointer",
+                  transition: "color 0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+                onMouseOut={(e) => (e.target.style.color = "#fff")}
+              >
+                Logout
+              </button>
             </>
           ) : (
             <>
-              <Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
-              <Link to="/register" onClick={() => setMenuOpen(false)}>Register</Link>
+              <Link
+                to="/login"
+                style={{
+                  margin: "0 15px",
+                  color: "#fff",
+                  fontSize: "18px",
+                  transition: "color 0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+                onMouseOut={(e) => (e.target.style.color = "#fff")}
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                style={{
+                  margin: "0 15px",
+                  color: "#fff",
+                  fontSize: "18px",
+                  transition: "color 0.3s",
+                }}
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+                onMouseOut={(e) => (e.target.style.color = "#fff")}
+              >
+                Register
+              </Link>
             </>
           )}
         </div>
-      )}
+      </div>
     </nav>
   );
 };
-
 export default Navbar;
+
 
