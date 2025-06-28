@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
-// Example video URL (replace with your own or a royalty-free video)
-const VIDEO_URL = "https://v1.pinimg.com/videos/mc/720p/46/20/69/4620695ebaa40cf835e9c646fc18296f.mp4";
+const VIDEO_URL = "/Register.mp4"; 
 
 const RegisterForm = () => {
   const [form, setForm] = useState({
@@ -54,8 +53,8 @@ const RegisterForm = () => {
           muted
           playsInline
           style={{
-            width: "1700px",
-            height: "700px",
+            width: "1850px",
+            height: "730px",
             borderRadius: "10px",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
             objectFit: "cover",
@@ -72,8 +71,8 @@ const RegisterForm = () => {
           position: "fixed",
           top: 0,
           left: 0,
-          width: "20vw",
-          height: "20vh",
+          width: "100vw",
+          height: "100vh",
           zIndex: 1,
           pointerEvents: "none",
         }}
@@ -92,6 +91,7 @@ const RegisterForm = () => {
           borderRadius: "12px",
           boxShadow: "0 4px 32px rgba(0,0,0,0.2)",
           padding: "2rem",
+          pointerEvents: "none",
         }}
       >
         <h2 className="register-title" style={{ textAlign: "center" }}>Join our community</h2>
