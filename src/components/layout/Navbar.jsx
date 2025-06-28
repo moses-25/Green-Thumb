@@ -7,7 +7,6 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
-
   const handleLogout = () => {
     logout();
     navigate("/login");
@@ -16,10 +15,10 @@ const Navbar = () => {
   return (
     <nav
       style={{
-        backgroundColor: "#228B22", // Forest green background
-        color: "#fff", // White text
+        backgroundColor: "#228B22",
+        color: "#fff",
         padding: "15px 30px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", // Add shadow for depth
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
       }}
     >
       <div
@@ -36,10 +35,10 @@ const Navbar = () => {
             fontSize: "24px",
             fontWeight: "bold",
             color: "#fff",
-            textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)", // Add text shadow
+            textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)",
           }}
         >
-          Green Thumb 🌱
+          Green Thumb 
         </Link>
         <div>
           <Link
@@ -50,7 +49,7 @@ const Navbar = () => {
               fontSize: "18px",
               transition: "color 0.3s",
             }}
-            onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+            onMouseOver={(e) => (e.target.style.color = "#FFD700")}
             onMouseOut={(e) => (e.target.style.color = "#fff")}
           >
             Plants
@@ -63,7 +62,7 @@ const Navbar = () => {
               fontSize: "18px",
               transition: "color 0.3s",
             }}
-            onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+            onMouseOver={(e) => (e.target.style.color = "#FFD700")}
             onMouseOut={(e) => (e.target.style.color = "#fff")}
           >
             Reminders
@@ -78,7 +77,7 @@ const Navbar = () => {
                   fontSize: "18px",
                   transition: "color 0.3s",
                 }}
-                onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
                 onMouseOut={(e) => (e.target.style.color = "#fff")}
               >
                 My Plants
@@ -91,7 +90,7 @@ const Navbar = () => {
                   fontSize: "18px",
                   transition: "color 0.3s",
                 }}
-                onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
                 onMouseOut={(e) => (e.target.style.color = "#fff")}
               >
                 Reminders
@@ -107,7 +106,7 @@ const Navbar = () => {
                   cursor: "pointer",
                   transition: "color 0.3s",
                 }}
-                onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
                 onMouseOut={(e) => (e.target.style.color = "#fff")}
               >
                 Logout
@@ -123,7 +122,7 @@ const Navbar = () => {
                   fontSize: "18px",
                   transition: "color 0.3s",
                 }}
-                onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
                 onMouseOut={(e) => (e.target.style.color = "#fff")}
               >
                 Login
@@ -136,7 +135,7 @@ const Navbar = () => {
                   fontSize: "18px",
                   transition: "color 0.3s",
                 }}
-                onMouseOver={(e) => (e.target.style.color = "#FFD700")} // Gold hover effect
+                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
                 onMouseOut={(e) => (e.target.style.color = "#fff")}
               >
                 Register
@@ -148,6 +147,6 @@ const Navbar = () => {
     </nav>
   );
 };
-export default Navbar;
 
+export default Navbar;
 
