@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import ProtectedRoute from "./components/layout/ProtectedRoute";
@@ -7,14 +6,12 @@ import PlantsPage from "./pages/PlantsPage";
 import RemindersPage from "./pages/RemindersPage";
 import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";
-import { AuthProvider } from "./context/AuthContext";
-import NotFound from "./pages/NotFound";
 
-const App = () => {
+function App() {
   return (
-    <AuthProvider>
+    <>
       <Navbar />
-      <main className="container">
+      <div className="container">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginForm />} />
@@ -35,12 +32,11 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          <Route path="*" element={<NotFound />} />
         </Routes>
-      </main>
-    </AuthProvider>
+      </div>
+    </>
   );
-};
+}
 
 export default App;
 

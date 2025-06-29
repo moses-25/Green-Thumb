@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
@@ -14,11 +14,12 @@ const Navbar = () => {
   return (
     <nav
       style={{
-        backgroundColor: "#228B22",
-        color: "#fff",
+        background: "#388e3c",
         padding: "15px 30px",
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
       }}
+      aria-label="Main navigation"
+      role="navigation"
     >
       <div
         className="container"
@@ -28,88 +29,82 @@ const Navbar = () => {
           alignItems: "center",
         }}
       >
-        <Link
+        <NavLink
           to="/"
           style={{
             fontSize: "24px",
             fontWeight: "bold",
             color: "#fff",
             textShadow: "1px 1px 3px rgba(0, 0, 0, 0.3)",
+            textDecoration: "none",
           }}
         >
           Green Thumb🌱
-        </Link>
+        </NavLink>
         <div>
           {!user ? (
             <>
-              <Link
+              <NavLink
                 to="/login"
-                style={{
+                style={({ isActive }) => ({
                   margin: "0 15px",
-                  color: "#fff",
+                  color: isActive ? "#FFD700" : "#fff",
                   fontSize: "18px",
-                  transition: "color 0.3s",
-                }}
-                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
-                onMouseOut={(e) => (e.target.style.color = "#fff")}
+                  textDecoration: "none",
+                })}
+                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
               >
                 Login
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to="/register"
-                style={{
+                style={({ isActive }) => ({
                   margin: "0 15px",
-                  color: "#fff",
+                  color: isActive ? "#FFD700" : "#fff",
                   fontSize: "18px",
-                  transition: "color 0.3s",
-                }}
-                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
-                onMouseOut={(e) => (e.target.style.color = "#fff")}
+                  textDecoration: "none",
+                })}
               >
                 Register
-              </Link>
+              </NavLink>
             </>
           ) : (
             <>
-              <Link
+              <NavLink
                 to="/plants"
-                style={{
+                style={({ isActive }) => ({
                   margin: "0 15px",
-                  color: "#fff",
+                  color: isActive ? "#FFD700" : "#fff",
                   fontSize: "18px",
-                  transition: "color 0.3s",
-                }}
-                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
-                onMouseOut={(e) => (e.target.style.color = "#fff")}
+                  textDecoration: "none",
+                })}
               >
                 My Plants
-              </Link>
-              <Link
+              </NavLink>
+              <NavLink
                 to="/reminders"
-                style={{
+                style={({ isActive }) => ({
                   margin: "0 15px",
-                  color: "#fff",
+                  color: isActive ? "#FFD700" : "#fff",
                   fontSize: "18px",
-                  transition: "color 0.3s",
-                }}
-                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
-                onMouseOut={(e) => (e.target.style.color = "#fff")}
+                  textDecoration: "none",
+                })}
               >
                 Reminders
-              </Link>
+              </NavLink>
               <button
+                type="button"
                 onClick={handleLogout}
                 style={{
                   margin: "0 15px",
-                  background: "none",
-                  border: "none",
                   color: "#fff",
                   fontSize: "18px",
+                  background: "none",
+                  border: "none",
                   cursor: "pointer",
                   transition: "color 0.3s",
                 }}
-                onMouseOver={(e) => (e.target.style.color = "#FFD700")}
-                onMouseOut={(e) => (e.target.style.color = "#fff")}
+                aria-label="Logout"
               >
                 Logout
               </button>

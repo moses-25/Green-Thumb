@@ -15,13 +15,16 @@ const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm((prevForm) => ({
+      ...prevForm,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -80,66 +83,70 @@ const RegisterForm = () => {
 
       {/* Form Container */}
       <div
-        className="register-form-container"
         style={{
           position: "relative",
           zIndex: 2,
           maxWidth: "400px",
           margin: "0 auto",
           top: "10vh",
-          background: "rgba(255,255,255,0.92)",
+          backgroundColor: "rgba(255,255,255,0.92)",
           borderRadius: "12px",
           boxShadow: "0 4px 32px rgba(0,0,0,0.2)",
           padding: "2rem",
-         // pointerEvents: "none",
         }}
       >
-        <h2 className="register-title" style={{ textAlign: "center" }}>Join our community</h2>
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Register</h2>
         <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name" className="form-label">
-              Name
-            </label>
+          <div style={{ marginBottom: "15px" }}>
+            <label style={{ display: "block", marginBottom: "5px" }}>Name</label>
             <input
               type="text"
               name="name"
-              id="name"
               value={form.name}
               onChange={handleChange}
               placeholder="Enter your name"
               required
-              className="form-input register-input"
+              style={{
+                width: "100%",
+                padding: "8px",
+                borderRadius: "5px",
+                border: "1px solid #ccc",
+              }}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="email" className="form-label">
-              Email
-            </label>
+          <div style={{ marginBottom: "15px" }}>
+            <label style={{ display: "block", marginBottom: "5px" }}>Email</label>
             <input
               type="email"
               name="email"
-              id="email"
               value={form.email}
               onChange={handleChange}
               placeholder="Enter your email"
               required
-              className="form-input register-input"
+              style={{
+                width: "100%",
+                padding: "8px",
+                borderRadius: "5px",
+                border: "1px solid #ccc",
+              }}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="password" className="form-label">
-              Password
-            </label>
+          <div style={{ marginBottom: "15px" }}>
+            <label style={{ display: "block", marginBottom: "5px" }}>Password</label>
             <div className="password-input-container" style={{ position: "relative" }}>
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
-                id="password"
                 value={form.password}
                 onChange={handleChange}
                 placeholder="Enter your password"
                 required
-                className="form-input register-input"
+                style={{
+                  width: "100%",
+                  padding: "8px",
+                  borderRadius: "5px",
+                  border: "1px solid #ccc",
+                }}
               />
               <span
                 onClick={togglePasswordVisibility}
