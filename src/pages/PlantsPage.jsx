@@ -1,10 +1,13 @@
+import "../styles/PlantsPage.css";
 import PlantList from "../components/plants/PlantList";
 
 const PlantsPage = () => {
   return (
     <div className="plants-page">
-      <h2>My Plants 🌿</h2>
-      <p>Here you'll see your plants listed.</p>
+      <div className="plants-header">
+        <h2> My Plants</h2>
+        <p>Track all your plants and manage their care schedule easily.</p>
+      </div>
       <PlantList />
     </div>
   );

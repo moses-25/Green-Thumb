@@ -1,24 +1,34 @@
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import "../../styles/ReminderCalendar.css";
 
-const ReminderCalendar = ({ reminders }) => {
+const ReminderCalendar = ({ reminders, onSelectDate }) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const getRemindersForDate = (date) => {
-    const d = date.toISOString().split("T")[0];
-    return reminders.filter((r) => r.date === d);
+  const getReminderDates = () =>
+    reminders.map((r) => new Date(r.date).toDateString());
+
+  const tileClassName = ({ date, view }) => {
+    if (view === "month") {
+      const reminderDates = getReminderDates();
+      return reminderDates.includes(date.toDateString()) ? "has-reminder" : null;
+    }
+  };
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    onSelectDate(date);
   };
 
   return (
-    <div>
-      <Calendar onChange={setSelectedDate} value={selectedDate} />
-      <h3 className="mt-4">Reminders for {selectedDate.toDateString()}:</h3>
-      <ul>
-        {getRemindersForDate(selectedDate).map((r) => (
-          <li key={r.id}>{r.text}</li>
-        ))}
-      </ul>
+    <div className="reminder-calendar">
+      <h3> Select a Date</h3>
+      <Calendar
+        onChange={handleDateChange}
+        value={selectedDate}
+        tileClassName={tileClassName}
+      />
     </div>
   );
 };

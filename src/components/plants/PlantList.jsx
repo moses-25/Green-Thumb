@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PlantCard from "./PlantCard";
 import PlantForm from "./PlantForm";
+import "../../styles/PlantList.css";
 
 const PlantList = () => {
   const [plants, setPlants] = useState([]);
@@ -21,9 +22,9 @@ const PlantList = () => {
   };
 
   return (
-    <div>
+    <div className="plant-list-container">
       <PlantForm onSubmit={handleAddOrUpdate} selectedPlant={editing} />
-      <div className="plant-list">
+      <div className="plant-grid">
         {plants.map((plant) => (
           <PlantCard
             key={plant.id}
